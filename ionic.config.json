@@ -1,0 +1,8 @@
+{
+  "name": "smartshare",
+  "app_id": "852545f0",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
