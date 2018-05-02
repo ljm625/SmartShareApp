@@ -8,6 +8,9 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+declare let require: any;
+declare let window: any;
+const Web3 = require('web3');
 
 @Component({
   templateUrl: 'app.html'
@@ -18,6 +21,7 @@ export class MyApp {
   // make HelloIonicPage the root (or first) page
   rootPage = HelloIonicPage;
   pages: Array<{title: string, component: any}>;
+  web3 = undefined;
 
   constructor(
     public platform: Platform,
@@ -41,6 +45,15 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+    // Web3 Related
+    if (typeof window.web3 !== 'undefined') {
+      this.web3 = new Web3(window.web3.currentProvider);
+    } else {
+      // set the provider you want from Web3.providers
+      this.web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/mew"));
+    }
+
   }
 
   openPage(page) {
@@ -48,5 +61,11 @@ export class MyApp {
     this.menu.close();
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
+    this.web3.eth.getBalance("0xB270C422E3757463E58D1A1B423D91935Ef85dCc").then((result) =>{
+      console.log(result);
+      this.pages[0].title = result;
+
+    });
+    console.log(this.web3.eth.getBalance("0xB270C422E3757463E58D1A1B423D91935Ef85dCc"));
   }
 }
