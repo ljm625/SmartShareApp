@@ -10,18 +10,19 @@
 
 <ion-content padding>
 
-  <h3>Welcome to your first Ionic app!</h3>
+  <h3>SmartShare Pool details</h3>
 
   <p>
-    This starter project is our way of helping you get a functional app running in record time.
+    Your Address: {{wallet}}
   </p>
   <p>
-    Follow along on the tutorial section of the Ionic docs!
+    Your contribution: {{toETH(contribution)}} ETH
   </p>
+  <progress-bar [progress]="(contribution/eth_cap)*100"></progress-bar>
   <p>
     <button ion-button color="primary" menuToggle>Toggle Menu</button>
   </p>
-  <progress-bar [progress]="(current_eth/eth_cap)*100"></progress-bar>
+  <progress-bar [progress]="(current_eth/eth_cap)*100">1/100ETH</progress-bar>
   <ion-content padding>
     <button ion-button color="secondary" block (click)="showPrompt()">Set Address</button>
   </ion-content>

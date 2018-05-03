@@ -7,6 +7,7 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {ItemDetailsPage} from "../pages/item-details/item-details";
 
 declare let require: any;
 declare let window: any;
@@ -19,7 +20,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage = HelloIonicPage;
+  rootPage = ItemDetailsPage;
   pages: Array<{title: string, component: any}>;
   web3 = undefined;
 
@@ -60,12 +61,12 @@ export class MyApp {
     // close the menu when clicking a link from the menu
     this.menu.close();
     // navigate to the new page if it is not the current page
-    this.nav.setRoot(page.component);
-    this.web3.eth.getBalance("0xB270C422E3757463E58D1A1B423D91935Ef85dCc").then((result) =>{
-      console.log(result);
-      this.pages[0].title = result;
-
-    });
-    console.log(this.web3.eth.getBalance("0xB270C422E3757463E58D1A1B423D91935Ef85dCc"));
+    this.nav.setRoot(page.component,{"contract":"0x345ca3e014aaf5dca488057592ee47305d9b3e10"});
+    // this.web3.eth.getBalance("0xB270C422E3757463E58D1A1B423D91935Ef85dCc").then((result) =>{
+    //   console.log(result);
+    //   this.pages[0].title = result;
+    //
+    // });
+    // console.log(this.web3.eth.getBalance("0xB270C422E3757463E58D1A1B423D91935Ef85dCc"));
   }
 }
