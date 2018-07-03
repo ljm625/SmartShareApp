@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Hello Ionic</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h3>SmartShare Pool details</h3>
+
+  <p>
+    Your Address: {{wallet}}
+  </p>
+  <p>
+    Your contribution: {{toETH(contribution)}} ETH
+  </p>
+  <progress-bar [progress]="(contribution/eth_cap)*100"></progress-bar>
+  <p>
+    <button ion-button color="primary" menuToggle>Toggle Menu</button>
+  </p>
+  <progress-bar [progress]="(current_eth/eth_cap)*100">1/100ETH</progress-bar>
+  <ion-content padding>
+    <button ion-button color="secondary" block (click)="showPrompt()">Set Address</button>
+  </ion-content>
+
+
+
+</ion-content>
