@@ -9,11 +9,10 @@ import {web3_api,contract_abi} from "../config.global";
 @Injectable()
 export class Web3Tools {
   public web3 = null;
-  public
+  public contract_address = "";
 
-  init(){
+  constructor(){
     this.web3 = new Web3(new Web3.providers.HttpProvider(web3_api));
-
   }
 
   toETH(wei){
@@ -56,9 +55,13 @@ export class Web3Tools {
     }
   }
 
-  contribute(){
+
+
+  contribute_eth(){
 
   }
+
+
 
 
 
